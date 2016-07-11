@@ -17,7 +17,7 @@ public class BallTrigger : MonoBehaviour {
 			transform.position = new Vector3 (0, 0, 0);
 			BallMovement.SpeedUp ();
 			PlayerControl.SpeedUp ();
-			GameplayController.PauseGame ();
+			GameplayController.WaitForPlayer ();
 		}
 	}
 }
