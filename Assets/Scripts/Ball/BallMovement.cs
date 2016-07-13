@@ -5,12 +5,13 @@ public class BallMovement : MonoBehaviour {
 
 	private static float angle = 0f;
 	private static bool IsMovingUp = true;
-	private static float speed = 2.8f;
+	private static float speed;
 	private Rigidbody2D body;
 
-	void Start () {
+	void Awake () {
 		body = GetComponent<Rigidbody2D> ();
 		body.gravityScale = 0f;
+		BallMovement.ResetSpeed ();
 	}
 
 	void FixedUpdate () {
@@ -34,8 +35,12 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	public static void SpeedUp(){
-		speed += 0.8f;
+		speed += 0.5f;
 	}
+
+	public static void ResetSpeed() {
+		speed = 2.8f;
+	} 
 
 	void MoveUp () {
 		Vector3 position = transform.position;

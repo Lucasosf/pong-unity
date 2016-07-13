@@ -5,7 +5,7 @@ public class PlayerControl : MonoBehaviour {
 
 	private Rigidbody2D body;
 	private float minX, maxX;
-	private static float speed = 0.5f;
+	private static float speed;
 
 	[SerializeField]
 	private string sideOfScreen;
@@ -13,9 +13,12 @@ public class PlayerControl : MonoBehaviour {
 	[SerializeField]
 	private GameObject ball;
 
+	public bool robot;
+
 	void Awake () {
 		body = GetComponent<Rigidbody2D> ();
 		body.gravityScale = 0f;
+		PlayerControl.ResetSpeed ();
 	}
 
 	void Start() {
@@ -23,7 +26,7 @@ public class PlayerControl : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (GameManager.robot) {
+		if (Robot ()) {
 			FollowBall ();
 		} else {
 			MoveByTouches ();
@@ -32,6 +35,14 @@ public class PlayerControl : MonoBehaviour {
 
 	public static void SpeedUp() {
 		speed += 0.3f;
+	}
+
+	public static void ResetSpeed() {
+		speed = 0.5f;
+	}
+
+	bool Robot() {
+		return (this.robot && GameManager.robot);
 	}
 
 	void FollowBall() {
