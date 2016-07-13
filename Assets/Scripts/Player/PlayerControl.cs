@@ -48,7 +48,10 @@ public class PlayerControl : MonoBehaviour {
 
 	void MoveByTouches() {
 		if (Input.touchCount > 0) {
+			
 			foreach(Touch touch in Input.touches) {
+				Debug.LogFormat ("touch x:{0} y:{1}", touch.position.x, touch.position.y);
+
 				Vector3 position = Camera.main.ScreenToWorldPoint (touch.position);
 
 				if (sideOfScreen == "Top") {
