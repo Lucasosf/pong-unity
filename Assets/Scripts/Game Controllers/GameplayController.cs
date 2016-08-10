@@ -29,4 +29,11 @@ public class GameplayController : MonoBehaviour {
 		Time.timeScale = 1f;
 		Application.LoadLevel ("Menu");
 	}
+
+	public void RestartGame () {
+		Time.timeScale = 1f;
+		ScoreManager.Reset ();
+		BallMovement.ResetSpeed ();
+		PlayerControl.ResetSpeed ();
+	}
 }
