@@ -16,6 +16,8 @@ public class ScoreManager : MonoBehaviour {
 	public Text enemyWinnerText;
 	public Text playerWinnerText;
 
+	public GameObject gameplayControlPanel;
+
 	void MakeSingleton () {
 		if (instance == null) {
 			instance = this;
@@ -51,15 +53,23 @@ public class ScoreManager : MonoBehaviour {
 		ScoreManager.instance.enemy = 0;
 		ScoreManager.instance.player = 0;
 		ScoreManager.instance.gameOverPanel.SetActive (false);
+		ScoreManager.instance.gameplayControlPanel.SetActive (true);
 		ScoreManager.FillScoreboards ();
 	}
 
 	public static void CheckForGameOver () {
-		if (ScoreManager.instance.enemy > 2 || ScoreManager.instance.player > 2) {
+		if (ScoreManager.instance.enemy > 8 || ScoreManager.instance.player > 8) {
 			Time.timeScale = 0f;
 			ScoreManager.instance.gameOverPanel.SetActive (true);
+			ScoreManager.instance.gameplayControlPanel.SetActive (false);
 
-			if (ScoreManager.instance.enemy > 2) {
+			if (GameManager.robot) {
+				ScoreManager.instance.enemyWinnerText.transform.rotation = new Quaternion (0, 0, 0, 0);
+			} else {
+				ScoreManager.instance.enemyWinnerText.transform.rotation = new Quaternion (0, 0, 180, 0);
+			}
+
+			if (ScoreManager.instance.enemy > 8) {
 				ScoreManager.instance.enemyWinnerText.text = "Winner";
 				ScoreManager.instance.playerWinnerText.text = "Loser";
 			} else {
