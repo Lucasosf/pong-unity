@@ -14,9 +14,6 @@ public class BallTrigger : MonoBehaviour {
 		}
 
 		if (target.tag == "Goal") {
-
-			Debug.LogFormat ("y: {0}", transform.position.y);
-
 			if (transform.position.y > 0) {
 				ScoreManager.PointToPlayer ();
 			} else {
@@ -24,6 +21,7 @@ public class BallTrigger : MonoBehaviour {
 			}
 
 			transform.position = new Vector3 (0, 0, 0);
+
 			BallMovement.SpeedUp ();
 			PlayerControl.SpeedUp ();
 			GameplayController.WaitForPlayer ();

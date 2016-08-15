@@ -4,12 +4,12 @@ using System.Collections;
 public class MenuButtonController : MonoBehaviour {
 
 	public void PlayerVsRobot() {
-		GameManager.robot = true;
+		GameplayController.robot = true;
 		Application.LoadLevel("Gameplay");
 	}
 
 	public void PlayerVsPlayer() {
-		GameManager.robot = false;
+		GameplayController.robot = false;
 		Application.LoadLevel("Gameplay");
 	}
 }

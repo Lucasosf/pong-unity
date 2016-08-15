@@ -27,8 +27,11 @@ public class ScoreManager : MonoBehaviour {
 		}
 	}
 
-	void Start () {
+	void Awake() {
 		MakeSingleton ();
+	}
+
+	void Start () {
 		ScoreManager.Reset ();
 	}
 
@@ -63,7 +66,7 @@ public class ScoreManager : MonoBehaviour {
 			ScoreManager.instance.gameOverPanel.SetActive (true);
 			ScoreManager.instance.gameplayControlPanel.SetActive (false);
 
-			if (GameManager.robot) {
+			if (GameplayController.robot) {
 				ScoreManager.instance.enemyWinnerText.transform.rotation = new Quaternion (0, 0, 0, 0);
 			} else {
 				ScoreManager.instance.enemyWinnerText.transform.rotation = new Quaternion (0, 0, 180, 0);

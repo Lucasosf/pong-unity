@@ -8,7 +8,7 @@ public class BallMovement : MonoBehaviour {
 	private static float speed;
 	private Rigidbody2D body;
 
-	void Awake () {
+	void Start () {
 		body = GetComponent<Rigidbody2D> ();
 		body.gravityScale = 0f;
 		BallMovement.ResetSpeed ();
